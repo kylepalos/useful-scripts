@@ -18,3 +18,8 @@ Some algorithms (e.g., Nanopore RNA modification tools) report modified sites as
 ## Script #3: quantify_rnaseq_with_salmon.sh"
 
 Algorithms like [salmon](https://combine-lab.github.io/salmon/) and [kallisto](https://pachterlab.github.io/kallisto/about) quantify RNA-seq data without mapping reads to a reference genome. This seems to be the community's preferred way to quantify RNA-seq data due to it's accuracy, efficiency, and reproducibility. This script goes through making the index for Salmon and quantifying RNA-seq reads.
+
+
+## Script #4: correlation_gene_expression.R"
+
+I often work with adjacent or overlapping genes and want to know if a subset of them have correlated gene expression patterns. This script walks through making a fake example count matrix and correlates all genes in a pairwise manner which can be easily worked with for downstream analyses.
