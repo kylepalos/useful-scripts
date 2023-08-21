@@ -23,7 +23,7 @@ tx_posns <- data.frame(
 
 # Add gene IDs for each transcript ID
 tx_posns <- tx_posns %>%
-  left_join(tx2gene, by = c("transcript_id" = "TXNAME"))
+  left_join(., tx2gene, by = c("transcript_id" = "TXNAME"))
 
 # Get the strand for all genes and attach it to our genes of interest
 tx_strand <- transcripts(txdb, columns = c("tx_id", "tx_strand"), use.names = TRUE)
@@ -32,7 +32,7 @@ tx_strand_df <- annoGR2DF(tx_strand) %>%
   select(tx, tx_strand)
 
 tx_posns <- tx_posns %>%
-  left_join(tx_strand_df, by = c("transcript_id" = "tx"))
+  left_join(., tx_strand_df, by = c("transcript_id" = "tx"))
 
 # Convert to GRanges
 gr <- GRanges(
