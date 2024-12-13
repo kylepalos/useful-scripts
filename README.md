@@ -23,3 +23,17 @@ Algorithms like [salmon](https://combine-lab.github.io/salmon/) and [kallisto](h
 ## Script #4: correlation_gene_expression.R"
 
 I often work with adjacent or overlapping genes and want to know if a subset of them have correlated gene expression patterns. This script walks through making a fake example count matrix and correlates all genes in a pairwise manner which can be easily worked with for downstream analyses.
+
+
+## Script #5: convert_geneID_stringtie.sh
+
+When annotating new RNA isoforms using [StringTie](https://ccb.jhu.edu/software/stringtie/index.shtml), I often get to a point where GTF entries look like the following:
+
+```
+1	StringTie	transcript	6788	9130	.	-	.	transcript_id "MSTRG.2.3"; gene_id "MSTRG.2"; gene_name "gene:AT1G01020"
+1	StringTie	exon	6788	7069	.	-	.	transcript_id "MSTRG.2.3"; gene_id "MSTRG.2"; gene_name "gene:AT1G01020";
+```
+
+I don't want my final annotation to have a gene_id entry with StringTie's 'MSTRG' nomenclature when the reference gene for this transcript is actually an already annotated ID: 'gene:AT1G01020'. This script would convert **gene_id "MSTRG.2"** to **gene_id "gene:AT1G01020"**.
+
+Intergenic transcripts that don't have a reference gene ID do not have a won't have a **gene_name** entry and will be left alone.
